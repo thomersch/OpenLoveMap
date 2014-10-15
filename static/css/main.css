@@ -111,3 +111,12 @@ button {
 	top:1.6em;
 	font-style: italic;
 }
+
+.more_on_osm {
+	font-size: 80%;
+}
+
+.more_on_osm a {
+	text-decoration: none;
+	color: #CD59F7;
+}

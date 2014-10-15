@@ -1,15 +1,11 @@
 'use strict';
 var map, saved_lat, saved_lon, bbox;
 var kondom_icon, strip_icon, shop_icon, brothel_icon, register_icon;
-var gc_markers = new Array();
 var poi_markers = new Array();
 
 function jumpto(lat, lon) {
 	$("#autocomplete").hide();
 	map.panTo([lat, lon]);
-	$.each(gc_markers, function(number, marker) {
-		map.removeLayer(marker);
-	});
 }
 
 function geocode() {
@@ -23,11 +19,6 @@ function geocode() {
 			"limit": 5,
 			"lang": navigator.language
 		}, function(data) {
-			// bestehende marker entfernen
-			$.each(gc_markers, function(number, marker) {
-				map.removeLayer(marker);
-			});
-
 			var current_bounds = map.getBounds();
 			var autocomplete_content = "<li>";
 
@@ -43,13 +34,18 @@ function geocode() {
 	}
 }
 
-function setPoiMarker(poi_type, icon, lat, lon, tags, osmid) {
+function setPoiMarker(poi_type, icon, lat, lon, tags, osmid, osmtype) {
 	var mrk = L.marker([lat, lon], {icon: icon});
+	var osmlink = "https://www.openstreetmap.org/"+osmtype+"/"+osmid;
+
 	if(tags.name == undefined) {
 		var popup_content = "<strong>"+ poi_type +"</strong>";	
 	} else {
 		var popup_content = "<strong>" + tags.name + " ("+ poi_type +")</strong>";
 	}
+
+	popup_content += "<div class='more_on_osm'><a href='"+osmlink+"'>more on OpenStreetMap.org</a></div>";
+
 	mrk.bindPopup(popup_content);
 	poi_markers.push(mrk);
 	mrk.addTo(map);
@@ -73,13 +69,13 @@ function element_to_map(data) {
 				mrk = L.marker([el.lat, el.lon], {icon: kondom_icon});
 				mrk.bindPopup("Kondomautomat");
 			} else if(el.tags.amenity == "stripclub") {
-				setPoiMarker("Strip Club", strip_icon, el.lat, el.lon, el.tags, el.id);
+				setPoiMarker("Strip Club", strip_icon, el.lat, el.lon, el.tags, el.id, el.type);
 			} else if(el.tags.shop == "erotic" || el.tags.shop == "adult") {
-				setPoiMarker("Sex shop", shop_icon, el.lat, el.lon, el.tags, el.id);
+				setPoiMarker("Sex shop", shop_icon, el.lat, el.lon, el.tags, el.id, el.type);
 			} else if(el.tags.amenity == "brothel") {
-				setPoiMarker("Brothel", brothel_icon, el.lat, el.lon, el.tags, el.id);
+				setPoiMarker("Brothel", brothel_icon, el.lat, el.lon, el.tags, el.id, el.type);
 			} else if(el.tags.amenity == "register_office" || el.tags.office == "register") {
-				setPoiMarker("Register Office", register_icon, el.lat, el.lon, el.tags, el.id);
+				setPoiMarker("Register Office", register_icon, el.lat, el.lon, el.tags, el.id, el.type);
 			}
 		}
 	});
@@ -90,6 +86,7 @@ function get_op_elements() {
 	if(map.getZoom() < 12) {
 		return null;
 	}
+
 	bbox = map.getBounds().getSouth() + "," + map.getBounds().getWest() + "," + map.getBounds().getNorth() +  "," + map.getBounds().getEast();
 
 	localStorage.setItem("pos_lat", map.getCenter().lat)
