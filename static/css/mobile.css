@@ -1,0 +1,28 @@
+#topbar #logo {
+	display:none;
+}
+
+#topbar #searchgroup input {
+	width:73%;
+	left:0.5rem;
+}
+
+#topbar #searchgroup button {
+	position: absolute;
+	left:0;
+	right:0;
+	margin-left:83%;
+}
+
+#autocomplete {
+	left:0rem;
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+
+#autocomplete li {
+}
+
+#slogan {
+	display: none;
+}

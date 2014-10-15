@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/static/css/normalize.css" />
+		<link rel="stylesheet" href="http://static.lyrk.de/leaflet/0.7.2/leaflet.css" />
+		<link rel="stylesheet" href="/static/css/main.css" />
+		<link rel="stylesheet" href="/static/css/mobile.css" media="screen and (max-width: 600px)" />
+		<title>OpenLoveMap</title>
+	</head>
+	<body>
+		<div id="topbar">
+			<span id="logo"><img src="/static/img/olm.png" alt="OpenLoveMap" /></span>
+			<div id="searchgroup">
+				<input type="text" placeholder="Stadt" id="searchfield">
+				<button onClick="go_to_current_pos();"><img src="/static/img/orten.png"></button>
+				<div id="autocomplete"></div>
+			</div>
+			<span id="slogan">The love in the palm of your hand.</span>
+		</div>
+
+		<div id="bigmap">
+		</div>
+
+		<script src="http://static.lyrk.de/leaflet/0.7.2/leaflet.js"></script>
+		<script src="/static/js/leaflet-hash.js"></script>
+		<script src="http://static.lyrk.de/jquery/jquery-1.10.2.min.js"></script>
+		<script src="/static/js/alltonodes.js"></script>
+		<script src="/static/js/maplyrk.js"></script>
+	</body>
+</html>

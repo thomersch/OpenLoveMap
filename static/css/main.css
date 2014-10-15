@@ -1,0 +1,112 @@
+* {
+	padding:0;
+	margin:0;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+button {
+	border-radius: 5px;
+	text-shadow:none;
+	background-color: rgba(255, 255, 255, 1);
+	border: 1px solid #7DA6C9;
+	color:#1968A6;
+}
+
+#topbar {
+	z-index: 2;
+	position: absolute;
+	width:100%;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+#topbar #logo {
+	height:100%;
+	position: absolute;
+	display: inline-block;
+	/*background-color: rgba(25, 104, 166, 1);*/
+}
+
+#topbar #logo img {
+	height: 3rem;
+	margin-top:0.75rem;
+	padding-left:0.5rem;
+	padding-right:0.5rem;
+}
+
+#topbar #searchgroup {
+	margin:0.7rem 0 0.7rem 0;
+	height:3rem;
+	width:100%;
+	vertical-align: top;
+	display: inline-block;
+}
+
+#topbar #searchgroup input {
+	font-size:1.5rem;
+	width: 20rem;
+	border: 1px solid #CD59F7;
+	padding: 0 0.5rem 0 0.5rem;
+	border-radius:5px;
+	height:3rem;
+	display: inline-block;
+	left:13rem;
+	position: absolute;
+}
+
+#topbar #searchgroup button {
+	border: 1px solid #CD59F7;
+	height:50px;
+	width:3rem;
+	margin-left:0.2rem;
+	display: inline-block;
+	position: absolute;
+	left:34.2rem;
+}
+
+#topbar #searchgroup button img {
+	width:70%;
+	margin-top:4px;
+}
+
+#bigmap {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.leaflet-control-zoom {
+	display:none;
+}
+
+#autocomplete {
+	position: absolute;
+	left:13rem;
+	top:4rem;
+	padding-left:0.5rem;
+	padding-right:0.5rem;
+	background: rgba(255, 255, 255, 0.9);
+	display: block;
+	width:20rem;
+	font-size:1.4rem;
+	line-height: 1.8rem;
+	display: none;
+}
+
+#autocomplete li {
+	list-style-type: none;
+}
+
+.autocomplete_ul {
+	display: block;
+}
+
+.leaflet-popup-content-wrapper {
+	border-radius: 0;
+}
+
+#slogan {
+	position: absolute;
+	left:39em;
+	top:1.6em;
+	font-style: italic;
+}
