@@ -1,0 +1,45 @@
+{
+    "data_format": 1,
+    "data_url": "http://openlovemap.de/openlovemap_taginfo.json",
+    "project": {
+        "name": "OpenLoveMap",
+        "description": "The love in the palm of your hand.",
+        "project_url": "http://openlovemap.de",
+        "contact_name": "Thomas Skowron",
+        "contact_email": "th@skowron.biz"
+    },
+    "tags": [
+        {
+            "key": "vending",
+            "value": "condoms"
+        },
+        {
+            "key": "amenity",
+            "value": "brothel"
+        },
+        {
+            "key": "amenity",
+            "value": "stripclub"
+        },
+        {
+            "key": "shop",
+            "value": "erotic"
+        },
+        {
+            "key": "shop",
+            "value": "adult"
+        },
+        {
+            "key": "office",
+            "value": "register"
+        },
+        {
+            "key": "amenity",
+            "value": "register_office"
+        },
+        {
+            "key": "shop",
+            "value": "sex"
+        }
+    ]
+}
