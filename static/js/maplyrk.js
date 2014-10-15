@@ -43,6 +43,17 @@ function geocode() {
 	}
 }
 
+function setPoiMarker(poi_type, icon, lat, lon, tags, osmid) {
+	var mrk = L.marker([lat, lon], {icon: icon});
+	if(tags.name == undefined) {
+		var popup_content = "<strong>"+ poi_type +"</strong>";	
+	} else {
+		var popup_content = "<strong>" + tags.name + " ("+ poi_type +")</strong>";
+	}
+	mrk.bindPopup(popup_content);
+	poi_markers.push(mrk);
+	mrk.addTo(map);
+}
 
 function element_to_map(data) {
 	$.each(poi_markers, function(_, mrk) {
@@ -62,28 +73,14 @@ function element_to_map(data) {
 				mrk = L.marker([el.lat, el.lon], {icon: kondom_icon});
 				mrk.bindPopup("Kondomautomat");
 			} else if(el.tags.amenity == "stripclub") {
-				mrk = L.marker([el.lat, el.lon], {icon: strip_icon});
-				popup_content = "<strong>" + el.tags.name + " (Stripclub)</strong>";
-				mrk.bindPopup(popup_content);
+				setPoiMarker("Strip Club", strip_icon, el.lat, el.lon, el.tags, el.id);
 			} else if(el.tags.shop == "erotic" || el.tags.shop == "adult") {
-				mrk = L.marker([el.lat, el.lon], {icon: shop_icon});
-				popup_content = "<strong>" + el.tags.name + " (Sexshop)</strong>";
-				mrk.bindPopup(popup_content);
+				setPoiMarker("Sex shop", shop_icon, el.lat, el.lon, el.tags, el.id);
 			} else if(el.tags.amenity == "brothel") {
-				mrk = L.marker([el.lat, el.lon], {icon: brothel_icon});
-				popup_content = "<strong>" + el.tags.name + " (Bordell)</strong>";
-				mrk.bindPopup(popup_content);
+				setPoiMarker("Brothel", brothel_icon, el.lat, el.lon, el.tags, el.id);
 			} else if(el.tags.amenity == "register_office" || el.tags.office == "register") {
-				mrk = L.marker([el.lat, el.lon], {icon: register_icon});
-				popup_content = "<strong>" + el.tags.name + " (Register Office)</strong>";
-				mrk.bindPopup(popup_content); 
-			} else {
-				mrk = L.marker([el.lat, el.lon]);
-				mrk.bindPopup(JSON.stringify(el.tags))
+				setPoiMarker("Register Office", register_icon, el.lat, el.lon, el.tags, el.id);
 			}
-
-			poi_markers.push(mrk);
-			mrk.addTo(map);
 		}
 	});
 }
