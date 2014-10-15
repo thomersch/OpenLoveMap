@@ -1,4 +1,6 @@
-var map;
+'use strict';
+var map, saved_lat, saved_lon, bbox;
+var kondom_icon, strip_icon, shop_icon, brothel_icon, register_icon;
 var gc_markers = new Array();
 var poi_markers = new Array();
 
@@ -12,10 +14,15 @@ function jumpto(lat, lon) {
 
 
 function geocode() {
-	if($("#searchfield").val().length > 3) {
-		$.getJSON("http://open.mapquestapi.com/geocoding/v1/address?callback=?&key=Fmjtd%7Cluur21u7nq%2C7s%3Do5-90txqa", {
-			"location": $("#searchfield").val(),
-			"outFormat": "json"
+	var searchword = $("#searchfield").val();
+
+	if(searchword.length > 3) {
+		$.getJSON("http://photon.komoot.de/api/", {
+			"q": searchword,
+			"lat": saved_lat,
+			"lon": saved_lon,
+			"limit": 5,
+			"lang": navigator.language
 		}, function(data) {
 			// bestehende marker entfernen
 			$.each(gc_markers, function(number, marker) {
@@ -23,25 +30,17 @@ function geocode() {
 			});
 
 			var current_bounds = map.getBounds();
-			var autocomplete_content = "<li>"
+			var autocomplete_content = "<li>";
 
-			// gefundene positionen markieren
-			$.each(data.results[0].locations, function(number, location) {
-				var latlng = [location.displayLatLng.lat, location.displayLatLng.lng];
-				if(current_bounds.contains(latlng)) {
-					newmarker = L.marker(latlng);
-					gc_markers.push(newmarker);
-					newmarker.addTo(map);
-				}
+			$.each(data.features, function(number, feature) {
+				var latlng = [feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
 
-				if(location.adminArea5 != "") autocomplete_content += "<ul onclick='jumpto("+location.displayLatLng.lat+", "+location.displayLatLng.lng+")'>"+location.adminArea5+", "+location.adminArea1+"</ul>";
+				autocomplete_content += "<ul onclick='jumpto(" + latlng[0] + ", " + latlng[1] + ")'>" + feature.properties.name + ", " + feature.properties.country + "</ul>";
 			});
 
 			$("#autocomplete").html(autocomplete_content+"</li>");
 			$("#autocomplete").show();
 		});
-	} else {
-		$("#autocomplete").hide();
 	}
 }
 
@@ -54,6 +53,7 @@ function element_to_map(data) {
 	data = all_to_nodes(data);
 	$.each(data.elements, function(_, el) {
 		if(el.tags != undefined && el.tags.entrance != "yes") {
+			var mrk, popup_content;
 
 			if(el.tags.vending != undefined) {
 				mrk = L.marker([el.lat, el.lon], {icon: kondom_icon});

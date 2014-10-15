@@ -94,6 +94,7 @@ button {
 
 #autocomplete li {
 	list-style-type: none;
+	cursor: pointer;
 }
 
 .autocomplete_ul {
