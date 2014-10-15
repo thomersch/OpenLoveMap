@@ -49,8 +49,12 @@ function element_to_map(data) {
 		map.removeLayer(mrk);
 	});
 
-	data = all_to_nodes(data);
 	$.each(data.elements, function(_, el) {
+		if(el.lat == undefined) {
+			el.lat = el.center.lat;
+			el.lon = el.center.lon;
+		}
+
 		if(el.tags != undefined && el.tags.entrance != "yes") {
 			var mrk, popup_content;
 
