@@ -12,7 +12,7 @@ function geocode() {
 	var searchword = $("#searchfield").val();
 
 	if(searchword.length > 3) {
-		$.getJSON("http://photon.komoot.de/api/", {
+		$.getJSON("https://photon.komoot.de/api/", {
 			"q": searchword,
 			"lat": saved_lat,
 			"lon": saved_lon,
@@ -93,7 +93,7 @@ function get_op_elements() {
 	localStorage.setItem("pos_lon", map.getCenter().lng)
 
 	$.ajax({
-		url: "http://overpass-api.de/api/interpreter",
+		url: "https://overpass-api.de/api/interpreter",
 		data: {
 			"data": '[out:json][timeout:25];(node["vending"="condoms"]('+bbox+');way["vending"="condoms"]('+bbox+');relation["vending"="condoms"]('+bbox+');node["amenity"="brothel"]('+bbox+');way["amenity"="brothel"]('+bbox+');relation["amenity"="brothel"]('+bbox+');node["amenity"="stripclub"]('+bbox+');way["amenity"="stripclub"]('+bbox+');relation["amenity"="stripclub"]('+bbox+');node["shop"="erotic"]('+bbox+');way["shop"="erotic"]('+bbox+');relation["shop"="erotic"]('+bbox+');node["shop"="adult"]('+bbox+');way["shop"="adult"]('+bbox+');relation["shop"="adult"]('+bbox+');node["office"="register"]('+bbox+');way["office"="register"]('+bbox+');relation["office"="register"]('+bbox+');node["amenity"="register_office"]('+bbox+');way["amenity"="register_office"]('+bbox+');relation["amenity"="register_office"]('+bbox+');node["shop"="sex"]('+bbox+');way["shop"="sex"]('+bbox+');relation["shop"="sex"]('+bbox+'););out body center;'
 		},
@@ -161,7 +161,7 @@ $(function() {
 
 	if(L.Browser.retina) var tp = "lr";
 	else var tp = "ls";
-	L.tileLayer('http://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=299723017f344e81866878c8f2fb0678', {
+	L.tileLayer('https://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=299723017f344e81866878c8f2fb0678', {
 		attribution: 'powered by <a href="https://geodienste.lyrk.de">Lyrk Geodienste</a>, <a href="http://geodienste.lyrk.de/copyright">Lizenzinformationen</a>',
 		maxZoom: 18
 	}).addTo(map);
