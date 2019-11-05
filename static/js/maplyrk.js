@@ -95,7 +95,7 @@ function get_op_elements() {
 	$.ajax({
 		url: "https://overpass-api.de/api/interpreter",
 		data: {
-			"data": '[out:json][timeout:25];(node["vending"="condoms"]('+bbox+');way["vending"="condoms"]('+bbox+');relation["vending"="condoms"]('+bbox+');node["amenity"="brothel"]('+bbox+');way["amenity"="brothel"]('+bbox+');relation["amenity"="brothel"]('+bbox+');node["amenity"="stripclub"]('+bbox+');way["amenity"="stripclub"]('+bbox+');relation["amenity"="stripclub"]('+bbox+');node["shop"="erotic"]('+bbox+');way["shop"="erotic"]('+bbox+');relation["shop"="erotic"]('+bbox+');node["shop"="adult"]('+bbox+');way["shop"="adult"]('+bbox+');relation["shop"="adult"]('+bbox+');node["office"="register"]('+bbox+');way["office"="register"]('+bbox+');relation["office"="register"]('+bbox+');node["amenity"="register_office"]('+bbox+');way["amenity"="register_office"]('+bbox+');relation["amenity"="register_office"]('+bbox+');node["shop"="sex"]('+bbox+');way["shop"="sex"]('+bbox+');relation["shop"="sex"]('+bbox+'););out body center;'
+			"data": '[bbox:'+bbox+'][out:json][timeout:25];(nwr[vending=condoms];nwr[amenity~"^(brothel|stripclub|register_office)$"];nwr[shop~"^(erotic|adult|sex)$"];nwr[office=register];);out body center;'
 		},
 		success: element_to_map
 	});
