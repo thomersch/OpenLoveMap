@@ -70,7 +70,7 @@ function element_to_map(data) {
 				mrk.bindPopup("Kondomautomat");
 			} else if(el.tags.amenity == "stripclub") {
 				setPoiMarker("Strip Club", strip_icon, el.lat, el.lon, el.tags, el.id, el.type);
-			} else if(el.tags.shop == "erotic" || el.tags.shop == "adult") {
+			} else if(el.tags.shop == "erotic" || el.tags.shop == "adult" || el.tags.shop == "sex") {
 				setPoiMarker("Sex shop", shop_icon, el.lat, el.lon, el.tags, el.id, el.type);
 			} else if(el.tags.amenity == "brothel") {
 				setPoiMarker("Brothel", brothel_icon, el.lat, el.lon, el.tags, el.id, el.type);
