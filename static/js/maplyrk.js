@@ -72,8 +72,12 @@ function element_to_map(data) {
 				setPoiMarker("Strip Club", strip_icon, el.lat, el.lon, el.tags, el.id, el.type);
 			} else if(el.tags.shop == "erotic" || el.tags.shop == "adult" || el.tags.shop == "sex") {
 				setPoiMarker("Sex shop", shop_icon, el.lat, el.lon, el.tags, el.id, el.type);
-			} else if(el.tags.amenity == "brothel" || el.tags.amenity == "love_hotel" || el.tags.amenity == "swingerclub") {
+			} else if(el.tags.amenity == "brothel") {
 				setPoiMarker("Brothel", brothel_icon, el.lat, el.lon, el.tags, el.id, el.type);
+			} else if(el.tags.amenity == "love_hotel") {
+				setPoiMarker("Love Hotel", brothel_icon, el.lat, el.lon, el.tags, el.id, el.type);
+			} else if(el.tags.amenity == "swingerclub") {
+				setPoiMarker("Swinger Club", brothel_icon, el.lat, el.lon, el.tags, el.id, el.type);
 			} else if(el.tags.amenity == "register_office" || el.tags.office == "register") {
 				setPoiMarker("Register Office", register_icon, el.lat, el.lon, el.tags, el.id, el.type);
 			}
