@@ -11,35 +11,43 @@
     "tags": [
         {
             "key": "vending",
-            "value": "condoms"
+            "value": "condoms",
+            "icon_url": "https://openlovemap.de/static/img/kondom.png"
         },
         {
             "key": "amenity",
-            "value": "brothel"
+            "value": "brothel",
+            "icon_url": "https://openlovemap.de/static/img/brothel.png"
         },
         {
             "key": "amenity",
-            "value": "stripclub"
+            "value": "stripclub",
+            "icon_url": "https://openlovemap.de/static/img/stripclub2.png"
         },
         {
             "key": "shop",
-            "value": "erotic"
+            "value": "erotic",
+            "icon_url": "https://openlovemap.de/static/img/shop.png"
         },
         {
             "key": "shop",
-            "value": "adult"
+            "value": "adult",
+            "icon_url": "https://openlovemap.de/static/img/shop.png"
         },
         {
             "key": "office",
-            "value": "register"
+            "value": "register",
+            "icon_url": "https://openlovemap.de/static/img/register.png"
         },
         {
             "key": "amenity",
-            "value": "register_office"
+            "value": "register_office",
+            "icon_url": "https://openlovemap.de/static/img/register.png"
         },
         {
             "key": "shop",
-            "value": "sex"
+            "value": "sex",
+            "icon_url": "https://openlovemap.de/static/img/shop.png"
         }
     ]
 }
