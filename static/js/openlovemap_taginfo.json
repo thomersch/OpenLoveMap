@@ -21,6 +21,16 @@
         },
         {
             "key": "amenity",
+            "value": "love_hotel",
+            "icon_url": "https://openlovemap.de/static/img/brothel.png"
+        },
+        {
+            "key": "amenity",
+            "value": "swingerclub",
+            "icon_url": "https://openlovemap.de/static/img/brothel.png"
+        },
+        {
+            "key": "amenity",
             "value": "stripclub",
             "icon_url": "https://openlovemap.de/static/img/stripclub2.png"
         },
