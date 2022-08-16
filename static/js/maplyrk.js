@@ -166,7 +166,7 @@ $(function() {
 	if(L.Browser.retina) var tp = "lr";
 	else var tp = "ls";
 	L.tileLayer('https://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=299723017f344e81866878c8f2fb0678', {
-		attribution: 'powered by <a href="https://geodienste.lyrk.de">Lyrk Geodienste</a>, <a href="http://geodienste.lyrk.de/copyright">Lizenzinformationen</a>',
+		attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, <a href="https://vectorine.com/vectortiles/">Vectorine</a>',
 		maxZoom: 18
 	}).addTo(map);
 
